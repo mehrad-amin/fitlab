@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+@theme {
+  /* پالت رنگی اصلی استخراج‌شده از طرح */
+  --color-brand-bg: #171f2f; /* رنگ پس‌زمینه اصلی */
+  --color-brand-surface: #202837; /* رنگ کارت‌ها و پنل‌های لایه دوم */
+  --color-brand-neon: #d7fb00; /* رنگ شاخص نئونی و اکشن‌ها */
+  --color-brand-white: #ffffff; /* رنگ سفید اصلی تیترها */
+  --color-brand-muted: #94a3b8; /* رنگ خاکستری متون توضیحی */
+
+  /* تعریف فونت‌ها */
+  --font-arabic: var(--font-cairo), sans-serif;
+  --font-english: var(--font-syne), sans-serif;
+}
+
+/* متغیرهای روت برای دسترسی مستقیم در استایل‌های خالص */
+:root {
+  --bg-main: #171f2f;
+  --bg-card: #202837;
+  --accent-neon: #d7fb00;
+  --text-primary: #ffffff;
+  --text-muted: #94a3b8;
+}
+
+/* تنظیمات پایه اسکرول و پس‌زمینه */
+html {
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  overflow-x: hidden;
+  background-color: var(--bg-main);
+}
+
+/* افکت تیترهای توخالی (استروک سفید) در هدر طرح */
+.text-stroke-white {
+  -webkit-text-stroke: 1.5px #ffffff;
+  color: transparent;
+}
+
+@media (max-width: 640px) {
+  .text-stroke-white {
+    -webkit-text-stroke: 1px #ffffff;
+  }
+}
+
+/* استایل گوشه‌های پخ‌خورده و هندسی برای کارت‌ها و باکس CTA */
+.clip-chamfer-box {
+  clip-path: polygon(
+    28px 0%,
+    100% 0,
+    100% calc(100% - 28px),
+    calc(100% - 28px) 100%,
+    0 100%,
+    0 28px
+  );
+}
+
+.clip-chamfer-card {
+  clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 0 100%);
+}
+
+/* هاله نوری نئونی برای المان‌های فعال و دکمه‌ها */
+.glow-neon {
+  box-shadow: 0 0 25px rgba(215, 251, 0, 0.35);
+}
+
+.glow-neon-lg {
+  box-shadow: 0 0 45px rgba(215, 251, 0, 0.45);
+}
