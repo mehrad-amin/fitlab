@@ -139,11 +139,10 @@ export default function RegistrationSection({
   const t = content[lang] || content.ar;
 
   const outlineStyle = {
-    color: "#111827",
-    WebkitTextStroke: isAr ? "1.6px #FFFFFF" : "1.8px #FFFFFF",
+    color: "#111827", // حتماً باید دقیقاً همرنگ پس‌زمینه سکشن (#111827) باشد تا متن داخلی کاملاً محو و مخفی بماند
+    WebkitTextStroke: isAr ? "1.5px #FFFFFF" : "1.8px #FFFFFF",
     paintOrder: "stroke fill",
   };
-
   const cardClipPath =
     "polygon(0 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 24px 100%, 0 calc(100% - 24px))";
 

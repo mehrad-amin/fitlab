@@ -12,11 +12,6 @@ import {
   ChevronLeft,
   Dumbbell,
   ShieldCheck,
-  Target,
-  Columns2,
-  GripVertical,
-  GripVerticalIcon,
-  ArrowLeftRight,
   MoveHorizontal,
 } from "lucide-react";
 
@@ -150,8 +145,8 @@ export default function TransformationSlider({ lang = "ar" }) {
   };
 
   const outlineStyle = {
-    color: "#111827",
-    WebkitTextStroke: isAr ? "1.6px #FFFFFF" : "1.8px #FFFFFF",
+    color: "#111827", // حتماً باید دقیقاً همرنگ پس‌زمینه سکشن (#111827) باشد تا متن داخلی کاملاً محو و مخفی بماند
+    WebkitTextStroke: isAr ? "1.5px #FFFFFF" : "1.8px #FFFFFF",
     paintOrder: "stroke fill",
   };
 
@@ -189,8 +184,6 @@ export default function TransformationSlider({ lang = "ar" }) {
 
   return (
     <section className="relative w-full overflow-hidden bg-[#111827] py-14 sm:py-20 lg:py-24">
-      {/* هاله نور پس‌زمینه */}
-
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* ۱. هدر سکشن با تایپوگرافی دوخطی برند */}
         <div className="flex flex-col items-center text-center">
@@ -230,7 +223,7 @@ export default function TransformationSlider({ lang = "ar" }) {
             <button
               onClick={handlePrev}
               aria-label="Previous Transformation"
-              className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-xl border border-white/15 bg-[#162032]/80 text-white transition-all hover:border-[#C7F500] hover:text-[#C7F500] active:scale-95"
+              className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-xl border border-white/15 bg-[#162032]/80 text-white transition-all hover:border-[#C7F500] hover:text-[#C7F500] active:scale-95 cursor-pointer"
             >
               <ChevronLeft className="h-5 w-5" />
             </button>
@@ -246,7 +239,7 @@ export default function TransformationSlider({ lang = "ar" }) {
             <button
               onClick={handleNext}
               aria-label="Next Transformation"
-              className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-xl border border-white/15 bg-[#162032]/80 text-white transition-all hover:border-[#C7F500] hover:text-[#C7F500] active:scale-95"
+              className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-xl border border-white/15 bg-[#162032]/80 text-white transition-all hover:border-[#C7F500] hover:text-[#C7F500] active:scale-95 cursor-pointer"
             >
               <ChevronRight className="h-5 w-5" />
             </button>
@@ -278,6 +271,7 @@ export default function TransformationSlider({ lang = "ar" }) {
                 style={{ clipPath: frameClipPath }}
                 className="relative h-full w-full overflow-hidden bg-[#0d131f]"
               >
+                {/* تصویر بعد (پس‌زمینه) */}
                 <Image
                   src={client.afterImg}
                   alt="After Transformation"
@@ -290,6 +284,7 @@ export default function TransformationSlider({ lang = "ar" }) {
                   {t.afterBadge}
                 </div>
 
+                {/* تصویر قبل (پرده رویی که با اسلایدر برش می‌خورد) */}
                 <div
                   className="absolute inset-0 h-full w-full overflow-hidden pointer-events-none"
                   style={{
@@ -309,19 +304,20 @@ export default function TransformationSlider({ lang = "ar" }) {
                   </div>
                 </div>
 
+                {/* خط عمودی و دایره هندل که به صورت فیزیکی به هم قفل شده‌اند */}
                 <div
                   className="pointer-events-none absolute top-0 bottom-0 z-30 w-[3px] bg-[#C7F500] shadow-[0_0_15px_#C7F500]"
                   style={{ left: `${sliderPos}%` }}
                 >
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex h-9 w-9 sm:h-11 sm:w-11 items-center justify-center rounded-full border-2 border-black bg-[#C7F500] text-black shadow-[0_0_25px_rgba(199,245,0,0.9)]">
-                    <MoveHorizontal className="h-4 w-4 sm:h-5 sm:w-5 stroke-[2.5]" />
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full border-2 border-black bg-[#C7F500] text-black shadow-[0_0_25px_rgba(199,245,0,0.9)]">
+                    <MoveHorizontal className="h-5 w-5 sm:h-6 sm:w-6 stroke-[2.5]" />
                   </div>
                 </div>
               </div>
             </div>
 
             <span className="mt-2.5 text-[11px] font-semibold text-slate-400 lg:hidden">
-              ↔ {t.swipeHint}
+              {t.swipeHint}
             </span>
           </div>
 
@@ -376,7 +372,7 @@ export default function TransformationSlider({ lang = "ar" }) {
             <div className="mt-6">
               <a
                 href="#register"
-                className="group flex h-12 sm:h-13 w-full items-center justify-center gap-2 rounded-xl bg-[#C7F500] px-6 text-xs sm:text-sm font-black text-black shadow-[0_0_24px_rgba(199,245,0,0.3)] transition-all hover:scale-[1.02] active:scale-95 whitespace-nowrap"
+                className="group flex h-12 sm:h-13 w-full items-center justify-center gap-2 rounded-xl bg-[#C7F500] px-6 text-xs sm:text-sm font-black text-black shadow-[0_0_24px_rgba(199,245,0,0.3)] transition-all hover:scale-[1.02] active:scale-95 whitespace-nowrap cursor-pointer"
               >
                 <span>{t.cta}</span>
                 {isAr ? (
@@ -403,7 +399,7 @@ export default function TransformationSlider({ lang = "ar" }) {
                 setCurrentIndex(idx);
                 setSliderPos(50);
               }}
-              className={`flex-shrink-0 flex items-center gap-2.5 rounded-xl border p-1.5 pe-4 transition-all duration-300 ${
+              className={`flex-shrink-0 flex items-center gap-2.5 rounded-xl border p-1.5 pe-4 transition-all duration-300 cursor-pointer ${
                 currentIndex === idx
                   ? "border-[#C7F500] bg-[#162032] shadow-[0_0_15px_rgba(199,245,0,0.25)]"
                   : "border-white/10 bg-[#162032]/40 hover:border-white/20 opacity-60 hover:opacity-100"

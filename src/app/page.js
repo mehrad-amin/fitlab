@@ -15,7 +15,6 @@ export default function Home() {
   const [lang, setLang] = useState("ar");
   const [selectedPlan, setSelectedPlan] = useState(null);
 
-  // انتخاب پلن در استیت بدون اسکرول اجباری
   const handleSelectPlan = (planId) => {
     setSelectedPlan(planId);
   };
@@ -23,7 +22,7 @@ export default function Home() {
   return (
     <div
       dir={lang === "ar" ? "rtl" : "ltr"}
-      className="font-sans bg-[#111827] text-white min-h-screen"
+      className="font-sans bg-[#111827] text-white min-h-screen w-full max-w-full overflow-x-hidden"
     >
       <Navbar lang={lang} setLang={setLang} />
       <Hero lang={lang} />

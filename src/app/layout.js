@@ -15,14 +15,18 @@ const syne = Syne({
   display: "swap",
 });
 
+export const metadata = {
+  title: "Coach Rise | Elite Fitness Coaching",
+  description: "Bilingual personal training and nutrition systems",
+};
+
 export default function RootLayout({ children }) {
   return (
-    <html lang="ar" dir="rtl" className={`${cairo.variable} ${syne.variable}`}>
-      {/* اضافه کردن مستقیم cairo.className به کلاس‌های بادی */}
+    <html className={`${cairo.variable} ${syne.variable} overflow-x-hidden`}>
       <body
-        className={`min-h-screen bg-brand-bg text-brand-white antialiased selection:bg-brand-neon selection:text-black ${cairo.className}`}
+        className={`min-h-screen w-full max-w-full overflow-x-hidden bg-[#111827] text-white antialiased selection:bg-[#C7F500] selection:text-black ${cairo.className}`}
       >
-        <main className="relative flex min-h-screen flex-col overflow-hidden">
+        <main className="relative flex min-h-screen w-full max-w-full flex-col overflow-x-hidden">
           {children}
         </main>
       </body>
