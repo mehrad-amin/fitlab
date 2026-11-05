@@ -72,7 +72,10 @@ export default function WhyChooseUs({ lang = "ar" }) {
   const t = content[lang] || content.ar;
 
   return (
-    <section className="relative w-full overflow-hidden bg-[#111827] py-14 sm:py-20 lg:py-24 select-none border-t border-white/5">
+    <section
+      id="why-us"
+      className="relative w-full overflow-hidden bg-[#111827] py-14 sm:py-20 lg:py-24 select-none border-t border-white/5 scroll-mt-20"
+    >
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center text-center">
           <span className="text-[10px] sm:text-xs font-black uppercase tracking-[0.25em] text-[#C7F500]">

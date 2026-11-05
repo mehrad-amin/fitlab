@@ -180,7 +180,10 @@ export default function TransformationSlider({ lang = "ar" }) {
   const t = content[lang] || content.ar;
 
   return (
-    <section className="relative w-full overflow-hidden bg-[#111827] py-14 sm:py-20 lg:py-24 select-none">
+    <section
+      id="results"
+      className="relative w-full overflow-hidden bg-[#111827] py-14 sm:py-20 lg:py-24 select-none scroll-mt-20"
+    >
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* ۱. هدر سکشن با تایپوگرافی برند */}
         <div className="flex flex-col items-center text-center">

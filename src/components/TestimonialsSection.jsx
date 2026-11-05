@@ -115,7 +115,10 @@ export default function TestimonialsSection({ lang = "ar" }) {
   };
 
   return (
-    <section className="relative w-full overflow-hidden bg-[#111827] py-20 sm:py-24 select-none border-t border-white/5">
+    <section
+      id="reviews"
+      className="relative w-full overflow-hidden bg-[#111827] py-20 sm:py-24 select-none border-t border-white/5 scroll-mt-20"
+    >
       {/* هاله نور پس‌زمینه */}
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

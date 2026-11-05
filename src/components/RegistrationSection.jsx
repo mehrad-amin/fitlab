@@ -159,7 +159,7 @@ export default function RegistrationSection({
   return (
     <section
       id="register"
-      className="relative w-full overflow-hidden bg-[#111827] py-20 sm:py-24 select-none border-t border-white/5"
+      className="relative w-full overflow-hidden bg-[#111827] py-20 sm:py-24 select-none border-t border-white/5 scroll-mt-20"
     >
       <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-[#C7F500]/5 blur-[160px]" />
 

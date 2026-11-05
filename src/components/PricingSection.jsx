@@ -139,7 +139,10 @@ export default function PricingSection({
     "polygon(0 0, calc(100% - 22px) 0, 100% 22px, 100% 100%, 22px 100%, 0 calc(100% - 22px))";
 
   return (
-    <section className="relative w-full overflow-hidden bg-[#111827] py-20 sm:py-24 select-none border-t border-white/5">
+    <section
+      id="pricing"
+      className="relative w-full overflow-hidden bg-[#111827] py-20 sm:py-24 select-none border-t border-white/5 scroll-mt-20"
+    >
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center text-center">
           <span className="text-[11px] sm:text-xs font-black uppercase tracking-[0.25em] text-[#C7F500]">

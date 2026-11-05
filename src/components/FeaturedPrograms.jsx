@@ -103,7 +103,10 @@ export default function FeaturedPrograms({ lang = "ar" }) {
   };
 
   return (
-    <section className="relative w-full max-w-full overflow-hidden bg-[#111827] py-12 sm:py-16 md:py-20 select-none">
+    <section
+      id="programs"
+      className="relative w-full max-w-full overflow-hidden bg-[#111827] py-12 sm:py-16 md:py-20 select-none scroll-mt-20"
+    >
       {/* دایره دکوراتیو پس‌زمینه */}
       <div
         className={`pointer-events-none absolute top-1/2 -translate-y-1/2 h-[320px] w-[320px] sm:h-[460px] sm:w-[460px] opacity-[0.035] ${

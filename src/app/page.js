@@ -10,6 +10,8 @@ import WhyChooseUs from "@/components/WhyChooseUs";
 import PricingSection from "@/components/PricingSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import RegistrationSection from "@/components/RegistrationSection";
+import FaqSection from "@/components/FaqSection";
+import ContactSection from "@/components/ContactSection";
 
 export default function Home() {
   const [lang, setLang] = useState("ar");
@@ -38,6 +40,8 @@ export default function Home() {
       />
 
       <TestimonialsSection lang={lang} />
+      <FaqSection lang={lang} />
+      <ContactSection lang={lang} />
 
       <RegistrationSection
         lang={lang}
