@@ -14,10 +14,10 @@ export default function FaqSection({ lang = "ar" }) {
   const content = {
     en: {
       eyebrow: "COMMON QUESTIONS & ANSWERS",
-      line1Solid: "FREQUENTLY",
-      line1Stroke: "ASKED",
-      line2Stroke: "EVERYTHING",
-      line2Solid: "YOU NEED TO KNOW",
+      line1Solid: "COMMON",
+      line1Stroke: "QUESTIONS",
+      line2Stroke: "CLEAR",
+      line2Solid: "ANSWERS!",
       items: [
         {
           q: "Do I have to strictly give up my favorite foods or social outings?",
@@ -98,11 +98,23 @@ export default function FaqSection({ lang = "ar" }) {
                 : "leading-[1.08] tracking-tight font-display"
             }`}
           >
-            <div className="flex items-center justify-center gap-2 sm:gap-3 text-2xl sm:text-4xl md:text-[42px] whitespace-nowrap">
+            <div
+              className={`flex items-center justify-center gap-1.5 sm:gap-3 whitespace-nowrap ${
+                isAr
+                  ? "text-2xl sm:text-4xl md:text-[42px]"
+                  : "text-[16px] xs:text-[18px] sm:text-3xl md:text-[40px] tracking-tight"
+              }`}
+            >
               <span className="text-white">{t.line1Solid}</span>
               <span style={outlineStyle}>{t.line1Stroke}</span>
             </div>
-            <div className="flex items-center justify-center gap-2 sm:gap-3 text-2xl sm:text-4xl md:text-[42px] whitespace-nowrap mt-0.5 sm:mt-1">
+            <div
+              className={`flex items-center justify-center gap-1.5 sm:gap-3 whitespace-nowrap mt-1 ${
+                isAr
+                  ? "text-2xl sm:text-4xl md:text-[42px]"
+                  : "text-[16px] xs:text-[18px] sm:text-3xl md:text-[40px] tracking-tight"
+              }`}
+            >
               <span style={outlineStyle}>{t.line2Stroke}</span>
               <span className="text-white">{t.line2Solid}</span>
             </div>

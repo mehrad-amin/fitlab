@@ -142,12 +142,24 @@ export default function FeaturedPrograms({ lang = "ar" }) {
                 : "leading-[1.08] tracking-tight font-display"
             }`}
           >
-            <div className="flex items-center justify-center gap-1.5 xs:gap-2 sm:gap-3 text-[19px] xs:text-[23px] sm:text-3xl md:text-[38px] lg:text-[44px] whitespace-nowrap">
+            <div
+              className={`flex items-center justify-center gap-1.5 sm:gap-3 whitespace-nowrap ${
+                isAr
+                  ? "text-[19px] xs:text-[23px] sm:text-3xl md:text-[38px] lg:text-[44px]"
+                  : "text-[15px] xs:text-[17px] sm:text-3xl md:text-[38px] lg:text-[44px] tracking-tight"
+              }`}
+            >
               <span className="text-white">{t.line1Solid}</span>
               <span style={outlineStyle}>{t.line1Stroke}</span>
             </div>
 
-            <div className="flex items-center justify-center gap-1.5 xs:gap-2 sm:gap-3 text-[19px] xs:text-[23px] sm:text-3xl md:text-[38px] lg:text-[44px] whitespace-nowrap mt-0.5 sm:mt-1">
+            <div
+              className={`flex items-center justify-center gap-1.5 sm:gap-3 whitespace-nowrap mt-1 ${
+                isAr
+                  ? "text-[19px] xs:text-[23px] sm:text-3xl md:text-[38px] lg:text-[44px]"
+                  : "text-[15px] xs:text-[17px] sm:text-3xl md:text-[38px] lg:text-[44px] tracking-tight"
+              }`}
+            >
               <span style={outlineStyle}>{t.line2Stroke}</span>
               <span className="text-white">{t.line2Solid}</span>
             </div>
