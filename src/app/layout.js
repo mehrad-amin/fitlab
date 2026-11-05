@@ -38,11 +38,8 @@ export const metadata = {
     type: "website",
     images: [
       {
-        url: "/images/og-image.jpg", // مسیر فایل در public/images/og-image.jpg
-        width: 1200,
-        height: 630,
-        type: "image/jpeg",
-        alt: "Coach Rise - Elite Fitness Coaching",
+        url: "/images/og-image.jpg",
+        alt: "Coach Rise",
       },
     ],
   },

@@ -249,12 +249,13 @@ export default function Hero({ lang = "ar" }) {
         </div>
 
         {/* نوار آمار */}
+        {/* نوار آمار */}
         <div className="mt-8 w-full border-t border-white/10 py-6 sm:mt-12 sm:py-8 lg:mt-14">
           <div className="grid grid-cols-3 gap-2 text-center sm:gap-4">
             {t.stats.map((stat, idx) => (
               <div
                 key={idx}
-                className="flex flex-col items-center justify-center"
+                className="flex flex-col items-center justify-start"
               >
                 <div className="flex items-center justify-center font-[900] tracking-tight">
                   {stat.prefix && (
@@ -271,9 +272,13 @@ export default function Hero({ lang = "ar" }) {
                     </span>
                   )}
                 </div>
-                <span className="mt-1 text-[11px] font-semibold text-brand-muted sm:text-xs md:text-sm">
-                  {stat.label}
-                </span>
+
+                {/* باکس توضیحات با ارتفاع رزرو یکنواخت و شکست متوازن */}
+                <div className="mt-1 flex min-h-[32px] sm:min-h-0 items-start justify-center">
+                  <span className="max-w-[105px] sm:max-w-none text-[11px] font-semibold text-brand-muted leading-tight text-balance sm:text-xs md:text-sm">
+                    {stat.label}
+                  </span>
+                </div>
               </div>
             ))}
           </div>
