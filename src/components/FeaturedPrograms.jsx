@@ -90,9 +90,7 @@ export default function FeaturedPrograms({ lang = "ar" }) {
 
   // استایل ضد باگ و هماهنگ برای هر دو زبان: پر کردن داخل حروف با رنگ زمینه و حذف خطوط تقاطع
   const outlineStyle = {
-    color: "#111827", // حتماً باید دقیقاً همرنگ پس‌زمینه سکشن (#111827) باشد تا متن داخلی کاملاً محو و مخفی بماند
-    WebkitTextStroke: isAr ? "1.5px #FFFFFF" : "1.8px #FFFFFF",
-    paintOrder: "stroke fill",
+    color: "#C7F500",
   };
 
   const clipPathStyle =

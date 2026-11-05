@@ -12,10 +12,9 @@ import {
   ChevronLeft,
   Dumbbell,
   ShieldCheck,
-  MoveHorizontal,
 } from "lucide-react";
 
-// دیتاست مقیاس‌پذیر برای مربی (پشتیبانی تا ده‌ها شاگرد)
+// دیتاست مقیاس‌پذیر برای مربی
 const TRANSFORMATIONS_DATA = [
   {
     id: 0,
@@ -145,9 +144,7 @@ export default function TransformationSlider({ lang = "ar" }) {
   };
 
   const outlineStyle = {
-    color: "#111827", // حتماً باید دقیقاً همرنگ پس‌زمینه سکشن (#111827) باشد تا متن داخلی کاملاً محو و مخفی بماند
-    WebkitTextStroke: isAr ? "1.5px #FFFFFF" : "1.8px #FFFFFF",
-    paintOrder: "stroke fill",
+    color: "#C7F500",
   };
 
   const frameClipPath =
@@ -183,9 +180,9 @@ export default function TransformationSlider({ lang = "ar" }) {
   const t = content[lang] || content.ar;
 
   return (
-    <section className="relative w-full overflow-hidden bg-[#111827] py-14 sm:py-20 lg:py-24">
+    <section className="relative w-full overflow-hidden bg-[#111827] py-14 sm:py-20 lg:py-24 select-none">
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* ۱. هدر سکشن با تایپوگرافی دوخطی برند */}
+        {/* ۱. هدر سکشن با تایپوگرافی برند */}
         <div className="flex flex-col items-center text-center">
           <span className="text-[10px] sm:text-xs font-black uppercase tracking-[0.25em] text-[#C7F500]">
             {t.eyebrow}
@@ -210,7 +207,7 @@ export default function TransformationSlider({ lang = "ar" }) {
           </h2>
         </div>
 
-        {/* ۲. نوار ناوبری لوکس و مقیاس‌پذیر برای شاگردان */}
+        {/* ۲. نوار ناوبری شاگردان */}
         <div className="mt-8 sm:mt-10 flex items-center justify-between max-w-4xl mx-auto border-b border-white/10 pb-4">
           <div className="flex items-center gap-2">
             <span className="h-2 w-2 rounded-full bg-[#C7F500] animate-pulse" />
@@ -246,9 +243,8 @@ export default function TransformationSlider({ lang = "ar" }) {
           </div>
         </div>
 
-        {/* ۳. گرید اصلی: اسلایدر مقایسه و کارت نتایج */}
+        {/* ۳. گرید اصلی: اسلایدر مقایسه‌ای */}
         <div className="mt-8 sm:mt-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-          {/* ستون اسلایدر مقایسه‌ای پرده‌ای */}
           <div className="lg:col-span-7 flex flex-col items-center">
             <div
               dir="ltr"
@@ -263,15 +259,19 @@ export default function TransformationSlider({ lang = "ar" }) {
               onClick={(e) => updatePosition(e.clientX)}
               style={{
                 clipPath: frameClipPath,
+                WebkitClipPath: frameClipPath,
                 touchAction: "pan-y",
               }}
               className="relative aspect-[4/5] sm:aspect-[4/5] md:aspect-[5/6] w-full max-w-[490px] cursor-ew-resize overflow-hidden bg-[#162032] p-[2px] shadow-[0_20px_50px_rgba(0,0,0,0.6)]"
             >
               <div
-                style={{ clipPath: frameClipPath }}
+                style={{
+                  clipPath: frameClipPath,
+                  WebkitClipPath: frameClipPath,
+                }}
                 className="relative h-full w-full overflow-hidden bg-[#0d131f]"
               >
-                {/* تصویر بعد (پس‌زمینه) */}
+                {/* تصویر بعد (After) */}
                 <Image
                   src={client.afterImg}
                   alt="After Transformation"
@@ -284,11 +284,12 @@ export default function TransformationSlider({ lang = "ar" }) {
                   {t.afterBadge}
                 </div>
 
-                {/* تصویر قبل (پرده رویی که با اسلایدر برش می‌خورد) */}
+                {/* تصویر قبل (Before) برش خورده با clipPath اصلاح‌شده */}
                 <div
                   className="absolute inset-0 h-full w-full overflow-hidden pointer-events-none"
                   style={{
                     clipPath: `inset(0 ${100 - sliderPos}% 0 0)`,
+                    WebkitClipPath: `inset(0 ${100 - sliderPos}% 0 0)`,
                   }}
                 >
                   <Image
@@ -304,13 +305,38 @@ export default function TransformationSlider({ lang = "ar" }) {
                   </div>
                 </div>
 
-                {/* خط عمودی و دایره هندل که به صورت فیزیکی به هم قفل شده‌اند */}
+                {/* خط تفکیک و دایره هندل: متصل در یک مرکز فیزیکی مشترک با عرض صفر */}
                 <div
-                  className="pointer-events-none absolute top-0 bottom-0 z-30 w-[3px] bg-[#C7F500] shadow-[0_0_15px_#C7F500]"
-                  style={{ left: `${sliderPos}%` }}
+                  className="pointer-events-none absolute top-0 bottom-0 z-30 grid place-items-center"
+                  style={{
+                    left: `${sliderPos}%`,
+                    transform: "translateX(-50%)",
+                    width: "48px",
+                  }}
                 >
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full border-2 border-black bg-[#C7F500] text-black shadow-[0_0_25px_rgba(199,245,0,0.9)]">
-                    <MoveHorizontal className="h-5 w-5 sm:h-6 sm:w-6 stroke-[2.5]" />
+                  {/* ۱. خط عمودی زرد نئونی (کاملاً نمایان و بدون تغییر عرض) */}
+                  <div
+                    className="h-full bg-[#C7F500] shadow-[0_0_15px_#C7F500]"
+                    style={{ width: "3px", gridArea: "1 / 1" }}
+                  />
+
+                  {/* ۲. دایره دستگیره - دقیقاً روی مرکز خط */}
+                  <div
+                    className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full border-2 border-black bg-[#C7F500] text-black shadow-[0_0_25px_rgba(199,245,0,0.9)]"
+                    style={{ gridArea: "1 / 1" }}
+                  >
+                    <svg
+                      className="h-5 w-5 sm:h-6 sm:w-6 stroke-[2.5]"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M18 8l4 4-4 4" />
+                      <path d="M6 8l-4 4 4 4" />
+                      <path d="M2 12h20" />
+                    </svg>
                   </div>
                 </div>
               </div>
@@ -321,7 +347,7 @@ export default function TransformationSlider({ lang = "ar" }) {
             </span>
           </div>
 
-          {/* ستون کارت دیتای بیومتریک و نتایج */}
+          {/* ۴. کارت دیتای بیومتریک و نتایج */}
           <div className="lg:col-span-5 flex flex-col justify-center text-center lg:text-start">
             <div className="inline-flex items-center justify-center lg:justify-start gap-2">
               <Dumbbell className="h-4 w-4 text-[#C7F500]" />
@@ -390,7 +416,7 @@ export default function TransformationSlider({ lang = "ar" }) {
           </div>
         </div>
 
-        {/* ۴. نوار اسکرول مینیاتوری چهره شاگردان */}
+        {/* ۵. بند انگشتی چهره شاگردان */}
         <div className="mt-10 sm:mt-12 flex items-center gap-3 overflow-x-auto pb-2 scrollbar-none">
           {TRANSFORMATIONS_DATA.map((item, idx) => (
             <button
