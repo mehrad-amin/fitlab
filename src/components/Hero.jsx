@@ -61,9 +61,9 @@ export default function Hero({ lang = "ar" }) {
       primaryCta: "ابدأ خطتك الآن",
       secondaryCta: "عرض البرامج",
       stats: [
-        { value: "1200", prefix: "+", label: "متدرب حققوا أهدافهم" },
-        { value: "10", prefix: "+", label: "سنوات خبرة معتمدة" },
-        { value: "100", suffix: "%", label: "برامج مخصصة ومضمونة" },
+        { value: "1200", prefix: "+", label: "متدرب ناجح" },
+        { value: "10", prefix: "+", label: "سنوات خبرة" },
+        { value: "100", suffix: "%", label: "نتائج مضمونة" },
       ],
     },
   };
@@ -259,15 +259,15 @@ export default function Hero({ lang = "ar" }) {
               >
                 <div className="flex items-center justify-center font-[900] tracking-tight">
                   {stat.prefix && (
-                    <span className="text-xl text-brand-neon sm:text-3xl md:text-4xl">
+                    <span className="text-xl text-brand-neon sm:text-3xl md:text-4xl whitespace-nowrap">
                       {stat.prefix}
                     </span>
                   )}
-                  <span className="text-2xl text-brand-white drop-shadow-sm sm:text-4xl md:text-5xl">
+                  <span className="text-2xl text-brand-white drop-shadow-sm sm:text-4xl md:text-5xl whitespace-nowrap">
                     {stat.value}
                   </span>
                   {stat.suffix && (
-                    <span className="text-xl text-brand-neon sm:text-3xl md:text-4xl">
+                    <span className="text-xl text-brand-neon sm:text-3xl md:text-4xl whitespace-nowrap">
                       {stat.suffix}
                     </span>
                   )}
