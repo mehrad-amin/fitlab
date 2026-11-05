@@ -48,7 +48,7 @@ export default function TrustBar({ lang }) {
     <section className="relative w-full max-w-full overflow-hidden border-y-2 border-black/10 bg-[#C7F500] py-4 shadow-xl select-none">
       <div className="flex w-full overflow-hidden">
         <div
-          className={`flex items-center gap-12 sm:gap-16 whitespace-nowrap will-change-transform transform-gpu hover:[animation-play-state:paused] ${
+          className={`flex items-center gap-12 sm:gap-16 whitespace-nowrap will-change-transform ${
             isAr ? "animate-marquee-rtl" : "animate-marquee"
           }`}
         >
