@@ -13,26 +13,14 @@ export default function Hero({ lang = "ar" }) {
   const frontRibbonRef = useRef(null);
 
   useEffect(() => {
+    // انیمیشن کاملاً بهینه روی opacity بدون دستکاری filter در GPU
     const ctx = gsap.context(() => {
-      // 1. Neon pulse - front ribbon
-      gsap.to(frontRibbonRef.current, {
-        filter:
-          "drop-shadow(0 0 18px rgba(215,251,0,0.9)) drop-shadow(0 0 35px rgba(215,251,0,0.4))",
-        duration: 2.2,
+      gsap.to([frontRibbonRef.current, backRibbonRef.current], {
+        opacity: 0.8,
+        duration: 2,
         repeat: -1,
         yoyo: true,
         ease: "sine.inOut",
-      });
-
-      // 2. Neon pulse - back ribbon
-      gsap.to(backRibbonRef.current, {
-        filter:
-          "drop-shadow(0 0 12px rgba(215,251,0,0.7)) drop-shadow(0 0 25px rgba(215,251,0,0.25))",
-        duration: 2.2,
-        repeat: -1,
-        yoyo: true,
-        ease: "sine.inOut",
-        delay: 0.4,
       });
     }, rigContainerRef);
 
@@ -61,7 +49,6 @@ export default function Hero({ lang = "ar" }) {
         { value: "100", suffix: "%", label: "Guaranteed Results" },
       ],
     },
-
     ar: {
       eyebrow: "تدريب شخصي احترافي بمعايير عالمية",
       titleTop: "قوة أعلى",
@@ -83,14 +70,13 @@ export default function Hero({ lang = "ar" }) {
 
   const t = content[lang] || content.ar;
 
-  // Cross-browser outline text style (Solid format)
   const cleanOutlineStyle = {
     color: "#C7F500",
   };
 
   return (
     <section className="relative w-full max-w-full overflow-x-hidden bg-brand-bg pt-4 pb-8 sm:pt-14 sm:pb-12 lg:pt-16 select-none">
-      {/* Background elements */}
+      {/* المان‌های پس‌زمینه با بلور بهینه‌شده برای موبایل */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden select-none">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_65%_at_50%_-15%,rgba(36,49,74,0.45),rgba(23,31,47,1))]" />
 
@@ -104,7 +90,7 @@ export default function Hero({ lang = "ar" }) {
         />
 
         <div
-          className={`absolute top-1/4 h-[400px] w-[400px] -translate-y-1/2 rounded-full opacity-20 blur-[130px] ${
+          className={`absolute top-1/4 h-[280px] w-[280px] sm:h-[400px] sm:w-[400px] -translate-y-1/2 rounded-full opacity-15 blur-2xl sm:blur-[100px] ${
             isAr ? "left-10 lg:left-28" : "right-10 lg:right-28"
           }`}
           style={{
@@ -115,31 +101,27 @@ export default function Hero({ lang = "ar" }) {
 
       <div className="relative mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid items-end gap-6 sm:gap-10 lg:grid-cols-12">
-          {/* Text and CTA column */}
+          {/* ستون متون */}
           <div
             className={`z-10 flex flex-col justify-center pb-6 lg:col-span-7 ${
               isAr ? "text-center lg:text-right" : "text-center lg:text-left"
             }`}
           >
-            {/* Eyebrow */}
             <div className="inline-flex items-center justify-center gap-2 lg:justify-start">
               <span className="h-1.5 w-1.5 rounded-full bg-brand-neon animate-pulse" />
-
               <p className="text-[11px] font-black tracking-widest text-brand-neon uppercase sm:text-xs">
                 {t.eyebrow}
               </p>
             </div>
 
-            {/* Main headline */}
             <h1
-              className={`mt-2 font-[900] uppercase tracking-tight break-words  ${
+              className={`mt-2 font-[900] uppercase tracking-tight break-words ${
                 isAr
                   ? "text-[34px] leading-[1.15] sm:text-5xl md:text-6xl lg:text-[70px]"
                   : "text-[36px] leading-[1.05] sm:text-5xl md:text-6xl lg:text-[72px] font-display"
               }`}
             >
               <span className="block text-brand-white">{t.titleTop}</span>
-
               <span
                 className="block"
                 lang={isAr ? "ar" : "en"}
@@ -148,9 +130,7 @@ export default function Hero({ lang = "ar" }) {
               >
                 {t.titleTopStroke}
               </span>
-
               <span className="block text-brand-white">{t.titleBottom}</span>
-
               <span
                 className="block"
                 lang={isAr ? "ar" : "en"}
@@ -161,7 +141,6 @@ export default function Hero({ lang = "ar" }) {
               </span>
             </h1>
 
-            {/* Glass badges */}
             <div className="mt-4 flex flex-wrap items-center justify-center gap-2 lg:justify-start">
               {t.badges.map((badge, idx) => (
                 <span
@@ -174,19 +153,16 @@ export default function Hero({ lang = "ar" }) {
               ))}
             </div>
 
-            {/* Description */}
             <p className="mt-3 text-xs leading-relaxed text-brand-muted sm:text-base sm:leading-relaxed lg:text-lg">
               {t.description}
             </p>
 
-            {/* CTA buttons */}
             <div className="mt-5 grid grid-cols-2 gap-3 sm:flex sm:flex-row sm:justify-start sm:gap-4">
               <a
                 href="#register"
                 className="group flex min-w-0 items-center justify-center gap-1 rounded-xl bg-brand-neon px-2 py-3.5 text-center text-xs font-black text-black shadow-[0_0_25px_rgba(215,251,0,0.35)] transition-all hover:scale-[1.02] active:scale-95 sm:gap-2 sm:px-8 sm:py-4 sm:text-base whitespace-nowrap cursor-pointer"
               >
                 <span>{t.primaryCta}</span>
-
                 {isAr ? (
                   <ArrowLeft className="h-4 w-4 shrink-0 transition-transform duration-200 group-hover:-translate-x-1 sm:h-5 sm:w-5 stroke-[2.5]" />
                 ) : (
@@ -203,7 +179,7 @@ export default function Hero({ lang = "ar" }) {
             </div>
           </div>
 
-          {/* 3D Coach Image Rig */}
+          {/* ریگ سه‌بعدی سبک‌شده بدون فشار پردازشی */}
           <div className="relative flex w-full justify-center self-end overflow-hidden lg:col-span-5">
             <div
               ref={rigContainerRef}
@@ -211,13 +187,12 @@ export default function Hero({ lang = "ar" }) {
                 isAr ? "scale-x-[-1]" : ""
               }`}
             >
-              {/* Back neon ribbon */}
+              {/* لایه عقب روبان - سایه استاتیک و بدون انیمیشن فیلتر */}
               <div
                 ref={backRibbonRef}
-                className="pointer-events-none absolute inset-0 z-10 h-full w-full"
+                className="pointer-events-none absolute inset-0 z-10 h-full w-full transform-gpu"
                 style={{
-                  filter:
-                    "drop-shadow(0 0 10px rgba(215,251,0,0.65)) drop-shadow(0 0 20px rgba(215,251,0,0.25))",
+                  filter: "drop-shadow(0 0 12px rgba(215,251,0,0.5))",
                 }}
               >
                 <Image
@@ -225,18 +200,19 @@ export default function Hero({ lang = "ar" }) {
                   alt="Neon Ribbon Back"
                   fill
                   priority
+                  sizes="(max-width: 768px) 300px, 410px"
                   className="object-contain object-bottom"
                 />
               </div>
 
-              {/* Coach image */}
+              {/* عکس مربی */}
               <div
-                className="relative z-20 h-full w-full"
+                className="relative z-20 h-full w-full transform-gpu"
                 style={{
                   maskImage:
-                    "linear-gradient(to bottom, black 72%, transparent 98%)",
+                    "linear-gradient(to bottom, black 75%, transparent 98%)",
                   WebkitMaskImage:
-                    "linear-gradient(to bottom, black 72%, transparent 98%)",
+                    "linear-gradient(to bottom, black 75%, transparent 98%)",
                 }}
               >
                 <Image
@@ -244,20 +220,19 @@ export default function Hero({ lang = "ar" }) {
                   alt="Fitness Coach"
                   fill
                   priority
-                  sizes="(max-width: 768px) 100vw, 410px"
+                  sizes="(max-width: 768px) 300px, 410px"
                   className="object-contain object-bottom"
                 />
 
                 <div className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-brand-bg via-brand-bg/70 to-transparent" />
               </div>
 
-              {/* Front neon ribbon */}
+              {/* لایه جلو روبان - سایه استاتیک و بدون انیمیشن فیلتر */}
               <div
                 ref={frontRibbonRef}
-                className="pointer-events-none absolute inset-0 z-30 h-full w-full"
+                className="pointer-events-none absolute inset-0 z-30 h-full w-full transform-gpu"
                 style={{
-                  filter:
-                    "drop-shadow(0 0 16px rgba(215,251,0,0.85)) drop-shadow(0 0 32px rgba(215,251,0,0.35))",
+                  filter: "drop-shadow(0 0 16px rgba(215,251,0,0.75))",
                 }}
               >
                 <Image
@@ -265,6 +240,7 @@ export default function Hero({ lang = "ar" }) {
                   alt="Neon Ribbon Front"
                   fill
                   priority
+                  sizes="(max-width: 768px) 300px, 410px"
                   className="object-contain object-bottom"
                 />
               </div>
@@ -272,7 +248,7 @@ export default function Hero({ lang = "ar" }) {
           </div>
         </div>
 
-        {/* Bottom statistics */}
+        {/* نوار آمار */}
         <div className="mt-8 w-full border-t border-white/10 py-6 sm:mt-12 sm:py-8 lg:mt-14">
           <div className="grid grid-cols-3 gap-2 text-center sm:gap-4">
             {t.stats.map((stat, idx) => (
@@ -286,18 +262,15 @@ export default function Hero({ lang = "ar" }) {
                       {stat.prefix}
                     </span>
                   )}
-
                   <span className="text-2xl text-brand-white drop-shadow-sm sm:text-4xl md:text-5xl">
                     {stat.value}
                   </span>
-
                   {stat.suffix && (
                     <span className="text-xl text-brand-neon sm:text-3xl md:text-4xl">
                       {stat.suffix}
                     </span>
                   )}
                 </div>
-
                 <span className="mt-1 text-[11px] font-semibold text-brand-muted sm:text-xs md:text-sm">
                   {stat.label}
                 </span>

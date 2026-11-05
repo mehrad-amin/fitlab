@@ -117,7 +117,6 @@ export default function TestimonialsSection({ lang = "ar" }) {
   return (
     <section className="relative w-full overflow-hidden bg-[#111827] py-20 sm:py-24 select-none border-t border-white/5">
       {/* هاله نور پس‌زمینه */}
-      <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[500px] w-[500px] rounded-full bg-[#C7F500]/5 blur-[150px]" />
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* هدر سکشن و کنترلرهای ناوبری */}
